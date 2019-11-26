@@ -1,2 +1,2 @@
 # scala-basics
-Basic scala programs for practise
+Basic scala programs for exercise
