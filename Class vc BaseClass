@@ -1,0 +1,177 @@
+//----------------- Class & Base Class in Scala -----------------
+
+class Person(val _name: String, val _age: Int)
+ {
+   val name: String = _name
+   val age: Int = _age
+ }
+ 
+ val p = new Person("Anant", 2)
+ println(p.name)
+ println(p.age)
+ println(p)
+ 
+ 
+case class Person1(name: String, age: Int)
+ 
+ val p1 = Person1("Anant", 6)
+ println(p1.name)
+ println(p1.age)
+ println(p1)
+ val p2 = Person1("Anant",2)
+ val p3 = Person1("Anant",6)
+ val p4 = p1
+ 
+ println("---- Normal Class -----")
+ println(p == p1)
+ println(p == p2)
+ 
+ println("---- Base Class -----")
+ println(p1 == p2)
+ println(p1 == p3)
+ println(p1 == p4)
+ 
+
+
+ //----------------- Object & Def -----------------
+ object Shape {
+  
+  def printMessage(name: String): String = {
+    if (name.isEmpty) "Please Provide a name"
+    else "This message is for " + name
+  }
+}
+
+println(Shape.printMessage("Anant")
+
+
+ //------------  Traits without parameters in Class ----------------- 
+trait Shape {
+  def draw(): String
+}
+
+class Circle extends Shape {
+  def draw(): String = "This is a Circle"
+}
+
+val c = new Circle
+println(c.draw())
+
+
+
+ //------------  Traits with parameters in Class ----------------- 
+trait Shape {
+  def draw(): String
+}
+
+class Circle(val r: Double) extends Shape {
+  def draw(): String = "This is a Circle with area of " + area()
+  def area(): Double = 3.14 * r * r
+}
+
+val c = new Circle(2.0)
+println(c.draw())
+
+
+
+
+
+ //------------  Inheritance ----------------- 
+trait Shape {
+  def draw(): String
+}
+
+class Circle(val r: Double) extends Shape {
+  def draw(): String = "This is a Circle with area of " + area()
+  def area(): Double = Circle.pi * r * r
+}
+
+
+class Cylinder(override val r: Double, val h: Double) extends Circle(r) {
+  override def draw(): String = "This is a Cylinder with area of " + area() + " and volume of " + volume()
+  override def area(): Double = 2 * Circle.pi * r * h + 2 * super.area()
+  def volume(): Double = super.area() * h
+}
+
+// Companion object -----------
+object Circle {
+  val pi: Double = 3.14
+}
+
+val c = new Circle(2.0)
+println(c.draw())
+
+val c1 = new Cylinder(2.0,1.5)
+println(c1.draw())
+
+
+// Assignment ----------------------
+
+
+// Square -----------
+class Square(val a: Double) extends Shape {
+  def draw(): String = "\nThis is a Square with area of " + area()
+  def area(): Double = a * a
+}
+
+val s = new Square(6.0)
+println(s.draw())
+
+// SquareCuboid -----------
+class SquareCuboid(override val a: Double, val h: Double) extends Square(a) {
+  override def draw(): String = "\nThis is a SquareCuboid with area of " + area() + " and volume of " + volume()
+  // Area of Cuboid = 2(l*b+b*h+h*l) -----------
+  override def area(): Double = 2 * (super.area() + 2 * h *a)
+  // Volume of Cuboid :L*B*H -----------
+  def volume(): Double = super.area() * h
+}
+
+val sc = new SquareCuboid(6.0,2.0)
+println(sc.draw())
+
+
+/* Companion object WHICH IS WRONGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG-----------
+object Shape {
+  def create(getShape: String,a: Double,h: Double): String = {
+    if (getShape == "Square") s.draw()
+    else if (getShape == "SquareCuboid") sc.draw()
+    else if (getShape == "Circle") c.draw()
+    else if (getShape == "Cylinder") c1.draw()
+    else "Please provide the Shape"
+  }
+}
+println("\n-------- Companion Object ------")
+println(Shape.create("Square",2.0,2.0))
+println(Shape.create("Cylinder",2.0,2.0)) */
+
+
+
+
+// Companion object WHICH IS RIGHTTTTTTTTTTTT-----------
+object Shape {
+  def create(getShape: String,r: Double,h: Double): Unit = {
+    if (getShape == "Circle") {
+      val c = new Circle(r)
+      println(c.draw())
+    }
+    else if (getShape == "Cylinder")  {
+      val c1 = new Cylinder(r,h)
+      println(c1.draw())
+    }
+    else if (getShape == "Square") {
+      val sq = new Square(r)
+      println(sq.draw())
+    }
+    else if (getShape == "SquareCuboid") {
+      val sqc = new SquareCuboid(r,h)
+      println(sqc.draw()) 
+    }
+    else {
+      println("Please provide the Shape")
+      
+    }
+  }
+}
+println("\n-------- Companion Object ------")
+Shape.create("Square",2.0,2.0)
+Shape.create("SquareCuboid",2.0,8.0)

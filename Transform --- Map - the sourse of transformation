@@ -1,0 +1,38 @@
+// Start writing your ScalaFiddle code here
+
+// Transform
+// Map is the function that takes another function and work operation on the collections one by one. 
+
+
+// Do Double operation on elements of List ------------------------------------
+---------------------One Way --------------------
+val x = (1 to 10)
+.toList
+.map(doubleIt)
+
+def doubleIt(number: Int): Int = (number * 2)
+println(x)
+
+
+---------------------Best Way --------------------
+val x = (1 to 10)
+.toList
+.map((a) => { a * 2})
+
+
+// Do Half operation on elements of List ------------------------------------
+---------------------One Way --------------------
+val x = (1 to 10)
+.toList
+.map((a) => { a * 2})
+
+//def halfIt(number: Int): Double = (number / 2.0)
+def halfIt(number: Int): Double = (number.toDouble / 2)
+println(x)
+
+
+---------------------Best Way --------------------
+val x = (1 to 10)
+.toList
+//.map((a) => { a / 2.0}) Because it has only one function.
+.map(a => a / 2.0) ----------- OR ----------------- .map( _ / 2.0 )

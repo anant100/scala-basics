@@ -1,0 +1,79 @@
+Create a list of size random:
+val listSize = (for(i <- 1 to 200) yield scala.util.Random.nextInt()).filter(_<0).length
+val randomList = (5 to listSize).toList
+What is the size of this list?
+What is the last element and what is the first?
+Take the first 5 elements and print them
+Take the last (list size - 5) elements
+What number is at index 3
+
+
+// Start writing your ScalaFiddle code here ---------------------------------------
+val listSize = (for(i <- 1 to 200) yield
+scala.util.Random.nextInt()).filter(_<0).length
+
+val randomList = (5 to listSize).toList
+
+println(randomList)
+
+// Size of List -------------------
+println("\n1. Size of List")
+println(randomList.size)
+
+// Size of List -----------------
+println("\n2. First & Last Element")
+println("First Element is " +randomList.head + " & Last Element is " + randomList.last)
+
+// First 5 Values ----------------- BEST IDEA ---- println(randomList.take(5)) OR  println(randomList take 5)
+println("\n3. First 5 Values")
+var i = 0
+while (i < 5) {
+  println(randomList(i))
+  i +=1
+}
+
+// (listSize - 5) Values  ----------------- BEST IDEA ---- println(randomList.drop(randomList.size - 5)) OR  println(randomList drop (randomList.size - 5))
+println("\n4. (listSize - 5) Values")
+var j = 1
+while (j < 6) {
+  println(randomList(randomList.size-j))
+  j +=1
+}
+
+// Value at index 3 -----------------------
+println("\n5. Value at index 3")
+println(randomList(2))
+
+
+
+
+
+
+// ----------------------------------------- Output ------------------------------------------------
+
+
+
+List(5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98)
+
+1. Size of List
+94
+
+2. First & Last Element
+First Element is 5 & Last Element is 98
+
+3. First 5 Values
+5
+6
+7
+8
+9
+
+4. (listSize - 5) Values
+98
+97
+96
+95
+94
+
+5. Value at index 3
+7

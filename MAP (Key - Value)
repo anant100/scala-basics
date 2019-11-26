@@ -1,0 +1,46 @@
+
+// Start writing your ScalaFiddle code here
+
+
+val x: Map[String, Int] = Map(
+  "I" -> 1,
+  "II" -> 2,
+  "III" -> 3
+  )
+  
+x.foreach(println)
+
+println(x("II"))
+
+
+
+// ----------------------------------------- Output ------------------------------------------------
+(I,1)
+(II,2)
+(III,3)
+
+2
+
+
+// Filter & foreach in MAP ------------------------------------------------------------------------
+
+val x: Map[String, Int] = Map(
+  "I" -> 1,
+  "II" -> 2,
+  "III" -> 3
+  ) ++
+  Map("IV" -> 4, "V" -> 5, "VI" -> 6)
+
+//.foreach(println)
+println(x("II"))
+
+// ----- Print collection of Map in which the value is less than and equals to 5. --------------------------
+
+//.filter((a,b) => b<= 5)   WRONG
+x
+.filter(z => z._2 <= 5)  RIGHT
+// OR
+//.filter(_._2 <= 5)   RIGHT
+// OR
+.filter { case (_,number) => number <= 5 }
+.foreach(println)

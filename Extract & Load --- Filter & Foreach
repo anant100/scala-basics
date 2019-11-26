@@ -1,0 +1,31 @@
+// Start writing your ScalaFiddle code here
+
+// Extract
+// Filter is the function that accepts  another fuction and perform filter on collection one by one & only gives output in TRUE or FALSE -------------
+
+
+val x = (1 to 10)
+.toList
+.filter(_ % 2 == 0)
+
+
+
+// ----------------------------------------- Output ------------------------------------------------
+List(2, 4, 6, 8, 10)
+
+
+
+
+// Now we can run map function on the filterred List ----------------------------
+.map( _ * 2 )
+
+
+
+// ----------------------------------------- Output ------------------------------------------------
+List(4, 8, 12, 16, 20)
+
+
+
+// ------------------------------------------------------------- Load ----------------------------------------
+// Foreach is the function that accepts all the elements but not do any operation on elements and don't give the output. 
+.foreach(println)

@@ -1,0 +1,145 @@
+
+// Pattern Matching -----------------------
+
+/* def samplePatternMatching(inputType: String): String = {
+  inputType match {
+    case "circle" => "You are looking for Circle"
+    case "cylinder" => "You are looking for Cylinder"
+    case _ => "I don't know what you're looking for"
+  }
+} */
+// Good Way to write def with only 1 state -----------------------
+println("\n String Matching --- ")
+def samplePatternMatching(inputType: String): String = inputType match {
+    case "circle" => "You are looking for Circle"
+    case "cylinder" => "You are looking for Cylinder"
+    case
+
+ _ => "I don't know what you're looking for"
+  }
+  
+println(samplePatternMatching("circle"))
+println(samplePatternMatching("cylinder"))
+println(samplePatternMatching("shape"))
+
+
+// ----------------------------------------- Output ------------------------------------------------
+ String Matching --- 
+You are looking for Circle
+You are looking for Cylinder
+I don't know what you're looking for
+
+
+
+
+
+
+// Pattern Matching with List ------------------ ----
+println("\n List Matching --- ")
+def listMatcher(inputList: List[Int]): String = inputList match {
+  case Nil => "It is a Empty List"
+  case 1 :: Nil => "It is a list of 1 element and it is 1 "
+  case 1 :: 2 :: Nil => "It is a list of 2 elements and it is 1 & 2"
+  case x :: Nil => s"It is a list of 1 element and it is $x "
+  case _ => "I don't know what its this!!!"
+}
+
+println(listMatcher(List()))
+println(listMatcher(List(1)))
+println(listMatcher(List(1,2)))
+println(listMatcher(List(1,2,3)))
+println(listMatcher(List(3)))
+
+
+
+
+
+// ----------------------------------------- Output ------------------------------------------------
+ List Matching --- 
+It is a Empty List
+It is a list of 1 element and it is 1 
+It is a list of 2 elements and it is 1 & 2
+I don't know what its this!!!
+It is a list of 1 element and it is 3 
+
+
+
+
+
+
+
+
+
+// Sum of elements in List --------------------------------------------
+println("\n Sum Operation of elements in List --- ")
+def sum(input: List[Int]): Int = input match {
+  case Nil => 0
+  case x :: Nil => x
+  case x :: xs => x + sum(xs)
+//  case Nil => 0
+//  case  _  => input.head + sum(input.tail)
+  
+}  
+  
+
+println(sum(List()))
+println(sum(List(6)))
+println(sum(List(1,2)))
+println(sum(List(1,2,3)))
+
+
+
+// ----------------------------------------- Output ------------------------------------------------
+
+
+
+ Sum Operation of elements in List --- 
+0
+6
+3
+6
+
+
+
+
+
+// Sum of Matrix ------------------------------------------------
+println("\n Sum Operation of elements in Matrix --- ")
+def sumMatrix(inputMatrix: List[List[Int]]): Int = {
+  
+  inputMatrix match {
+  case Nil => 0
+  case x :: Nil => sum(x)
+  case x :: xs => sum(x) + sumMatrix(xs)
+
+  }
+}
+  
+
+val m = List(
+    
+      List(1,2,3),
+      List(2,3,4),
+      List(3,2,4)
+      
+  )
+
+
+println(sumMatrix(Nil))
+println(sumMatrix(List(m.head)))
+println(sumMatrix(m))
+println(sumMatrix(m.init))
+
+
+
+
+
+// ----------------------------------------- Output ------------------------------------------------
+
+
+ Sum Operation of elements in Matrix --- 
+0
+6
+24
+15
+
